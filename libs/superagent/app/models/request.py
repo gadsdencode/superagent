@@ -10,6 +10,7 @@ class ApiUser(BaseModel):
 class Agent(BaseModel):
     isActive: bool = True
     name: str
+    initialMessage: Optional[str]
     prompt: Optional[str]
     llmModel: str
     description: str
@@ -28,6 +29,7 @@ class AgentInvoke(BaseModel):
     input: str
     sessionId: Optional[str]
     enableStreaming: bool
+    outputSchema: Optional[str]
 
 
 class Datasource(BaseModel):

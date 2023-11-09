@@ -19,6 +19,7 @@ enum LLMModel {
   GPT_3_5_TURBO_0613
   GPT_4_0613
   GPT_4_32K_0613
+  GPT_4_1106_PREVIEW
 }
 
 enum ToolType {
@@ -33,6 +34,9 @@ enum ToolType {
   METAPHOR
   PUBMED
   CODE_EXECUTOR
+  OPENBB
+  GPT_VISION
+  TTS_1
 }
 
 enum DatasourceType {
@@ -75,21 +79,22 @@ model ApiUser {
 }
 
 model Agent {
-  id            String            @id @default(uuid())
-  name          String
-  avatar        String?
-  description   String            @default("Add a agent description...") @db.Text
-  isActive      Boolean           @default(false)
-  createdAt     DateTime          @default(now())
-  updatedAt     DateTime          @updatedAt
-  llms          AgentLLM[]
-  llmModel      LLMModel          @default(GPT_3_5_TURBO_16K_0613)
-  prompt        String?
-  apiUserId     String
-  apiUser       ApiUser           @relation(fields: [apiUserId], references: [id])
-  datasources   AgentDatasource[]
-  tools         AgentTool[]
-  workflowSteps WorkflowStep[]
+  id             String            @id @default(uuid())
+  name           String
+  avatar         String?
+  initialMessage String?           @db.Text()
+  description    String            @default("Add a agent description...") @db.Text
+  isActive       Boolean           @default(false)
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+  llms           AgentLLM[]
+  llmModel       LLMModel          @default(GPT_3_5_TURBO_16K_0613)
+  prompt         String?
+  apiUserId      String
+  apiUser        ApiUser           @relation(fields: [apiUserId], references: [id])
+  datasources    AgentDatasource[]
+  tools          AgentTool[]
+  workflowSteps  WorkflowStep[]
 }
 
 model Datasource {
