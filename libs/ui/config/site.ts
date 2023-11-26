@@ -100,6 +100,10 @@ export const siteConfig = {
           title: "gpt-3.5-turbo-0613",
         },
         {
+          value: "GPT_3_5_TURBO_1106",
+          title: "gpt-3.5-turbo-1106",
+        },
+        {
           value: "GPT_4_0613",
           title: "gpt-4-0613",
         },
@@ -117,6 +121,19 @@ export const siteConfig = {
       name: "Azure OpenAI",
       logo: "/azure-logo.png",
       options: [],
+    },
+    {
+      disabled: true,
+      id: "HUGGINGFACE",
+      description: "Use Open Source models on HuggingFace.",
+      name: "HuggingFace",
+      logo: "/hf-logo.png",
+      options: [
+        {
+          value: "MISTRAL_7B_INSTRUCT_V01",
+          title: "mistral-7b-instruct-v0.1",
+        },
+      ],
     },
   ],
   datasourceTypes: [
@@ -139,6 +156,27 @@ export const siteConfig = {
     },
   ],
   toolTypes: [
+    {
+      value: "ALGOLIA",
+      title: "Algolia Index",
+      metadata: [
+        {
+          key: "index",
+          type: "input",
+          label: "Algolia Index",
+        },
+        {
+          key: "appId",
+          type: "input",
+          label: "Algolia App ID",
+        },
+        {
+          key: "apiKey",
+          type: "password",
+          label: "Algolia API Key",
+        },
+      ],
+    },
     {
       value: "BING_SEARCH",
       title: "Bing Search",
@@ -214,6 +252,11 @@ export const siteConfig = {
       metadata: [],
     },
     {
+      value: "HAND_OFF",
+      title: "Human hand-off (Alpha)",
+      metadata: [],
+    },
+    {
       value: "OPENAPI",
       title: "OpenAPI",
       metadata: [
@@ -232,6 +275,17 @@ export const siteConfig = {
     {
       value: "GPT_VISION",
       title: "GPT Vision",
+      metadata: [
+        {
+          key: "openaiApiKey",
+          type: "input",
+          label: "Your OpenAI API Key",
+        },
+      ],
+    },
+    {
+      value: "TTS_1",
+      title: "Text-To-Speech (TTS1)",
       metadata: [
         {
           key: "openaiApiKey",
